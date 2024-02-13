@@ -1,0 +1,1814 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             xmlns:dxsch="clr-namespace:DevExpress.Maui.Scheduler;assembly=DevExpress.Maui.Scheduler"
+             xmlns:dxg="clr-namespace:DevExpress.Maui.DataGrid;assembly=DevExpress.Maui.DataGrid"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxdf="clr-namespace:DevExpress.Maui.DataForm;assembly=DevExpress.Maui.Editors"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="true"
+             x:Class="Calculate_MauiDevExpress_1._0.MainPage" x:Name="MainContent">
+
+    <Grid x:Name="MainGrid">
+        <Grid x:Name="StartGrid" Margin="0,0,0,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <Frame x:Name="FrameToCopy" Opacity="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" VerticalOptions="End" Margin="0,0,0,10" HorizontalOptions="Center" HeightRequest="30" WidthRequest="145" BackgroundColor="#e0e0e0">
+                <Label Text="Скопировано" FontSize="15" TextColor="Black" FontAttributes="Bold" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
+            </Frame>
+
+            <ImageButton BackgroundColor="Transparent" Margin="20"
+                         Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                         Source="calculate.svg" 
+    />
+            <ImageButton Clicked="Get_transf_Grid" BackgroundColor="Transparent" Grid.ColumnSpan="2"
+                         Grid.Column="1" Grid.Row="0" Margin="20"
+                         Source="transf.svg" 
+    />
+            <ImageButton BackgroundColor="Transparent" Grid.ColumnSpan="2"
+                         Grid.Column="2" Grid.Row="0" Clicked="Get_Crypto_Grid"
+                         Source="rub.svg" Margin="20"
+    />
+            <Grid Grid.Column="3" RowDefinitions="*,*,*" ColumnDefinitions="*,*,*,*">
+                <ImageButton x:Name="BtnTheme" Source="moontheme.svg" Grid.Column="2" Grid.RowSpan="2" Clicked="ClickTheme"/>
+            </Grid>
+
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="3" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*">
+                <ImageButton Clicked="Click_DelAll" Source="delall.svg" 
+                             Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" Grid.RowSpan="2"
+                />
+                <ImageButton Clicked="Click_Del" Source="del.svg"
+                             Grid.Row="1" Grid.Column="5"  Grid.ColumnSpan="2" Grid.RowSpan="2"
+                />
+                <ImageButton Source="copy.svg" Clicked="Click_Copy"
+                             Grid.Row="1" Grid.Column="9"  Grid.ColumnSpan="2" Grid.RowSpan="2"
+                />
+            </Grid>
+
+
+
+
+            <Button Clicked="Button_Clicked" Text="÷" TextColor="#1C274C" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="50" Grid.Column="3" Grid.Row="2"
+            FontSize="50" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="1" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="0" Grid.Row="3"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="2" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="1" Grid.Row="3"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="3" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="2" Grid.Row="3"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="4" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="0" Grid.Row="4"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="5" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="1" Grid.Row="4"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="6" TextColor="Black"  BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="2" Grid.Row="4"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="7" TextColor="Black"  BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="0" Grid.Row="5"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="8" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="1" Grid.Row="5"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="9" TextColor="Black" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="2" Grid.Row="5"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="×" TextColor="#1C274C" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="50" Grid.Column="3" Grid.Row="3"
+            FontSize="50" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="+" TextColor="#1C274C" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="50" Grid.Column="3" Grid.Row="4"
+            FontSize="50" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="—" TextColor="#1C274C" BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="50" Grid.Column="3" Grid.Row="5"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="0" TextColor="Black"  BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="1" Grid.Row="6"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="," TextColor="Black"  BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="0" Grid.Row="6"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text="(" TextColor="Black"  BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="2" Grid.Row="6"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <Button Clicked="Button_Clicked" Text=")" TextColor="Black"  BackgroundColor="Transparent"
+        HeightRequest="50" WidthRequest="80" Grid.Column="3" Grid.Row="6"
+            FontAttributes="Bold" FontSize="30" Padding="0"
+    />
+            <BoxView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" VerticalOptions="End" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+            <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalOptions="Fill">
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="ResultText" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" Text="" VerticalOptions="End" FontSize="35" FontAttributes="Bold"/>
+
+
+                    <Label x:Name="TextOfTask" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalOptions="End" Text="" VerticalOptions="End" FontSize="25" TextColor="#262626" FontAttributes="Bold"/>
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+
+        <Grid x:Name="TransformGrid" Margin="0,0,0,15" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ImageButton BackgroundColor="Transparent" Margin="20"
+                     Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                     Source="calculate.svg" Clicked="Get_Calculate_Grid" 
+/>
+            <ImageButton Clicked="Get_transf_Grid" BackgroundColor="Transparent" Grid.ColumnSpan="2"
+                     Grid.Column="1" Grid.Row="0" Margin="20"
+                     Source="transf.svg"
+/>
+            <ImageButton BackgroundColor="Transparent" Grid.ColumnSpan="2"
+                     Grid.Column="2" Grid.Row="0" Clicked="Get_Crypto_Grid"
+                     Source="rub.svg" Margin="20"
+/>
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="square.svg" Grid.Column="0" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Image" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Площадь" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="data.svg" Grid.Column="1" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Image_Data" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Данные" Grid.Column="1"  VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="length.svg" Grid.Column="2" Grid.Row="0" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Image_Lenght" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Длина" Grid.Column="2" Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="weight.svg" Grid.Column="0" Grid.Row="1" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Image_Weight" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Масса" Grid.Column="0" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="system.svg" Grid.Column="1" Grid.Row="1" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Image_NumberS" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="С. Счисления" Grid.Column="1" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="speed.svg" Grid.Column="2" Grid.Row="1" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Image_Speed" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Скорость" Grid.Column="2" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="temperature.svg" Opacity="0.3" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                <Label Text="Температура⌛️" Grid.Column="0" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="time.svg" Opacity="0.3" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
+                <Label Text="Время⌛️" Grid.Column="1" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+
+                <Image Source="volume.svg" Opacity="0.3" Grid.Column="2" Grid.Row="2" VerticalOptions="Center"/>
+                <Label Text="Обьем⌛️" Grid.Column="2" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+
+
+
+            </Grid>
+
+        </Grid>
+
+        <Grid x:Name="SquareGrid" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="arrow.svg" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,10,0,0"
+                       >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Back_square" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Площадь" HorizontalOptions="Center" VerticalOptions="Center"
+                       FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
+                />
+
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+                    <Label x:Name="ConvertOne" Text="км²" VerticalOptions="Center" HorizontalOptions="Center"
+                           FontAttributes="Bold" FontSize="25"
+                    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center" HorizontalOptions="Center"
+                           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Image Source="swap.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"
+                       Grid.Row="1" Grid.RowSpan="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Swap" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+
+                    <Label x:Name="ConvertTwo" Text="м²" VerticalOptions="Center" HorizontalOptions="Center"
+                           FontAttributes="Bold" FontSize="25"
+                    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center"
+                           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Label x:Name="TextCountSquare" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                       FontSize="30" />
+
+                <Label x:Name="TextResultSquare" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                       FontSize="30" />
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Text="1" Grid.Row="0"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                        />
+                <Button Text="2" Grid.Row="0" Grid.Column="1"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="3" Grid.Row="0" Grid.Column="2"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="4" Grid.Row="1" Grid.Column="0"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="5" Grid.Row="1" Grid.Column="1"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="6" Grid.Row="1" Grid.Column="2"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="7" Grid.Row="2" Grid.Column="0"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="8" Grid.Row="2" Grid.Column="1"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="9" Grid.Row="2" Grid.Column="2"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="0" Grid.Row="3" Grid.Column="1"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <Button Text="," Grid.Row="3" Grid.Column="2"
+                        BackgroundColor="Transparent" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold"
+                        Clicked="Click_Number"
+                />
+
+                <ImageButton Source="delall.svg" CornerRadius="30"
+                             Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,0,10"
+                             Clicked="Click_DelAll_Square" 
+                             />
+
+                <ImageButton Source="del.svg" CornerRadius="30"
+                             Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10"
+                             Clicked="Click_Del_Square"
+                             />
+
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Start" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+
+
+
+
+            </Grid>
+
+            <Frame x:Name="FrameConvertType" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="23">
+                    <Label Text="Квадратные километры [ КМ² ]" FontSize="18" HorizontalOptions="Center"
+                           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Гектары [ ГА ]" FontSize="18" HorizontalOptions="Center"
+                           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные метры [ М² ]" FontSize="18" HorizontalOptions="Center"
+                           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные дециметры [ ДМ² ]" FontSize="18" HorizontalOptions="Center"
+                           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные сантиметры [ СМ² ]" FontSize="18" HorizontalOptions="Center"
+                           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные миллиметры [ ММ² ]" FontSize="18" HorizontalOptions="Center"
+                           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FrameConvertTypeTwo" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20" >
+                <VerticalStackLayout Spacing="23">
+                    <Label Text="Квадратные километры [ КМ² ]" FontSize="18" HorizontalOptions="Center"
+               FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Гектары [ ГА ]" FontSize="18" HorizontalOptions="Center"
+               FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные метры [ М² ]" FontSize="18" HorizontalOptions="Center"
+               FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные дециметры [ ДМ² ]" FontSize="18" HorizontalOptions="Center"
+               FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные сантиметры [ СМ² ]" FontSize="18" HorizontalOptions="Center"
+               FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Квадратные миллиметры [ ММ² ]" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+
+        <Grid x:Name="DataGrid" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="arrow.svg" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,10,0,0"
+               >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Back_Data" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Данные" HorizontalOptions="Center" VerticalOptions="Center"
+               FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
+        />
+
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+                    <Label x:Name="ConvertOneData" Text="ГБ" VerticalOptions="Center" HorizontalOptions="Center"
+                   FontAttributes="Bold" FontSize="25"
+            >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center" HorizontalOptions="Center"
+                   Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Data" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Image Source="swap.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"
+               Grid.Row="1" Grid.RowSpan="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Swap_Data" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+
+                    <Label x:Name="ConvertTwoData" Text="МБ" VerticalOptions="Center" HorizontalOptions="Center"
+                   FontAttributes="Bold" FontSize="25"
+            >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center"
+                   Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Data" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Label x:Name="TextCountData" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+               FontSize="30" />
+
+                <Label x:Name="TextResultData" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+               FontSize="30" />
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Text="1" Grid.Row="0"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+                />
+                <Button Text="2" Grid.Row="0" Grid.Column="1"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="3" Grid.Row="0" Grid.Column="2"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="4" Grid.Row="1" Grid.Column="0"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="5" Grid.Row="1" Grid.Column="1"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="6" Grid.Row="1" Grid.Column="2"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="7" Grid.Row="2" Grid.Column="0"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="8" Grid.Row="2" Grid.Column="1"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="9" Grid.Row="2" Grid.Column="2"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="0" Grid.Row="3" Grid.Column="1"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <Button Text="," Grid.Row="3" Grid.Column="2"
+                BackgroundColor="Transparent" TextColor="Black" 
+                FontSize="30" FontAttributes="Bold"
+                Clicked="Click_Number_Data"
+        />
+
+                <ImageButton Source="delall.svg" CornerRadius="30"
+                     Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,0,10"
+                     Clicked="Click_DelAll_Data" 
+                     />
+
+                <ImageButton Source="del.svg" CornerRadius="30"
+                     Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10"
+                     Clicked="Click_Del_Data"
+                     />
+
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Start" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+
+
+
+
+            </Grid>
+
+            <Frame x:Name="FrameConvertTypeData" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="23">
+                    <Label Text="Байт [ Б ]" FontSize="18" HorizontalOptions="Center"
+                   FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="КилоБайт [ КБ ]" FontSize="18" HorizontalOptions="Center"
+                   FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="МегаБайт [ МБ ]" FontSize="18" HorizontalOptions="Center"
+                   FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="ГигаБайт [ ГБ ]" FontSize="18" HorizontalOptions="Center"
+                   FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="ТераБайт [ ТБ ]" FontSize="18" HorizontalOptions="Center"
+                   FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="ПетаБайт [ ПБ ]" FontSize="18" HorizontalOptions="Center"
+                   FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FrameConvertTypeTwoData" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="23">
+                    <Label Text="Байт [ Б ]" FontSize="18" HorizontalOptions="Center"
+                            FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="КилоБайт [ КБ ]" FontSize="18" HorizontalOptions="Center"
+                            FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="МегаБайт [ МБ ]" FontSize="18" HorizontalOptions="Center"
+                            FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="ГигаБайт [ ГБ ]" FontSize="18" HorizontalOptions="Center"
+                            FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="ТераБайт [ ТБ ]" FontSize="18" HorizontalOptions="Center"
+                            FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="ПетаБайт [ ПБ ]" FontSize="18" HorizontalOptions="Center"
+                            FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Data" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+
+        <Grid x:Name="LenghtGrid" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="arrow.svg" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,10,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Back_Lenght" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Длина" HorizontalOptions="Center" VerticalOptions="Center"
+       FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
+/>
+
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+                    <Label x:Name="ConvertOneLenght" Text="КМ" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center" HorizontalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Lenght" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Image Source="swap.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"
+       Grid.Row="1" Grid.RowSpan="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Swap_Lenght" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+
+                    <Label x:Name="ConvertTwoLenght" Text="М" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Lenght" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Label x:Name="TextCountLenght" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+                <Label x:Name="TextResultLenght" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Text="1" Grid.Row="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+        />
+                <Button Text="2" Grid.Row="0" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="3" Grid.Row="0" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="4" Grid.Row="1" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="5" Grid.Row="1" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="6" Grid.Row="1" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="7" Grid.Row="2" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="8" Grid.Row="2" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="9" Grid.Row="2" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="0" Grid.Row="3" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <Button Text="," Grid.Row="3" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Lenght"
+/>
+
+                <ImageButton Source="delall.svg" CornerRadius="30"
+             Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_DelAll_Lenght" 
+             />
+
+                <ImageButton Source="del.svg" CornerRadius="30"
+             Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_Del_Lenght"
+             />
+
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Start" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+
+
+
+
+            </Grid>
+
+            <Frame x:Name="FrameConvertTypeLenght" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="Километр [ КМ ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Метр [ М ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Дециметр [ ДМ ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Сантиметр [ СМ ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Миллиметр [ ММ ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FrameConvertTypeTwoLenght" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="Километр [ КМ ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Метр [ М ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Дециметр [ ДМ ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Сантиметр [ СМ ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Миллиметр [ ММ ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Lenght" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+
+        <Grid x:Name="WeightGrid" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="arrow.svg" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,10,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Back_Weight" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Масса" HorizontalOptions="Center" VerticalOptions="Center"
+       FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
+/>
+
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+                    <Label x:Name="ConvertOneWeight" Text="КГ" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center" HorizontalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Weight" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Image Source="swap.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"
+       Grid.Row="1" Grid.RowSpan="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Swap_Weight" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+
+                    <Label x:Name="ConvertTwoWeight" Text="Г" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Weight" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Label x:Name="TextCountWeight" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+                <Label x:Name="TextResultWeight" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Text="1" Grid.Row="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+        />
+                <Button Text="2" Grid.Row="0" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="3" Grid.Row="0" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="4" Grid.Row="1" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="5" Grid.Row="1" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="6" Grid.Row="1" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="7" Grid.Row="2" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="8" Grid.Row="2" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="9" Grid.Row="2" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="0" Grid.Row="3" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <Button Text="," Grid.Row="3" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Weight"
+/>
+
+                <ImageButton Source="delall.svg" CornerRadius="30"
+             Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_DelAll_Weight" 
+             />
+
+                <ImageButton Source="del.svg" CornerRadius="30"
+             Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_Del_Weight"
+             />
+
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Start" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+
+
+
+
+            </Grid>
+
+            <Frame x:Name="FrameConvertTypeWeight" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="Тонна [ Т ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Центнер [ Ц ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Килограмм [ КГ ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Грамм [ Г ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Миллиграмм [ МГ ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FrameConvertTypeTwoWeight" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="Тонна [ Т ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Центнер [ Ц ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Килограмм [ КГ ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Грамм [ Г ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="Миллиграмм [ МГ ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Weight" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+
+        <Grid x:Name="NumberSGrid" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="arrow.svg" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,10,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Back_NumberS" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Системы Счисления" HorizontalOptions="Center" VerticalOptions="Center"
+       FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
+/>
+
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+                    <Label x:Name="ConvertOneNumberS" Text="10" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center" HorizontalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_NumberS" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Image Source="swap.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"
+       Grid.Row="1" Grid.RowSpan="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Swap_NumberS" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+
+                    <Label x:Name="ConvertTwoNumberS" Text="16" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_NumberS" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Label x:Name="TextCountNumberS" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+                <Label x:Name="TextResultNumberS" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Text="1" Grid.Row="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+        />
+                <Button Text="2" Grid.Row="0" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="3" Grid.Row="0" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="4" Grid.Row="1" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="5" Grid.Row="1" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="6" Grid.Row="1" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="7" Grid.Row="2" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="8" Grid.Row="2" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="9" Grid.Row="2" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="0" Grid.Row="3" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <Button Text="," Grid.Row="3" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_NumberS"
+/>
+
+                <ImageButton Source="delall.svg" CornerRadius="20"
+             Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_DelAll_NumberS" 
+             />
+
+                <ImageButton Source="del.svg" CornerRadius="20"
+             Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_Del_NumberS"
+             />
+                <Button Text="A" Grid.Row="3" Grid.Column="0"
+                        BackgroundColor="#1c274ca7" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold" Margin="10" Padding="0"
+                        Clicked="Click_Number_NumberS"
+                />
+                <Button Text="B" Grid.Row="4" Grid.Column="0"
+                        BackgroundColor="#1c274ca7" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold" Margin="10" Padding="0"
+                        Clicked="Click_Number_NumberS"
+                />
+                <Button Text="C" Grid.Row="4" Grid.Column="1"
+                        BackgroundColor="#1c274ca7" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold" Margin="10" Padding="0"
+                        Clicked="Click_Number_NumberS"
+                />
+                <Button Text="D" Grid.Row="4" Grid.Column="2"
+                        BackgroundColor="#1c274ca7" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold" Margin="10" Padding="0"
+                        Clicked="Click_Number_NumberS"
+                />
+                <Button Text="F" Grid.Row="4" Grid.Column="3"
+                        BackgroundColor="#1c274ca7" TextColor="Black" 
+                        FontSize="30" FontAttributes="Bold" Margin="10" Padding="0"
+                        Clicked="Click_Number_NumberS"
+                />
+
+
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Start" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+
+
+
+
+            </Grid>
+
+            <Frame x:Name="FrameConvertTypeNumberS" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="2-ая [ 2 ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="8-ая [ 8 ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="10-ая [ 10 ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="16-ая [ 16 ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FrameConvertTypeTwoNumberS" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="2-ая [ 2 ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="8-ая [ 8 ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="10-ая [ 10 ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="16-ая [ 16 ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_NumberS" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+
+        <Grid x:Name="SpeedGrid" IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="arrow.svg" VerticalOptions="Center" HorizontalOptions="Start" Margin="10,10,0,0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Back_Speed" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Скорость" HorizontalOptions="Center" VerticalOptions="Center"
+       FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
+/>
+
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+                    <Label x:Name="ConvertOneSpeed" Text="км/ч" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center" HorizontalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_Type_Speed" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Image Source="swap.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"
+       Grid.Row="1" Grid.RowSpan="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Swap_Speed" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
+
+                    <Label x:Name="ConvertTwoSpeed" Text="м/с" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25"
+    >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Source="pickerlist.svg" VerticalOptions="Center"
+           Grid.Column="1" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Speed" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Label x:Name="TextCountSpeed" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+                <Label x:Name="TextResultSpeed" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+       FontSize="30" />
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Button Text="1" Grid.Row="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+        />
+                <Button Text="2" Grid.Row="0" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="3" Grid.Row="0" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="4" Grid.Row="1" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="5" Grid.Row="1" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="6" Grid.Row="1" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="7" Grid.Row="2" Grid.Column="0"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="8" Grid.Row="2" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="9" Grid.Row="2" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="0" Grid.Row="3" Grid.Column="1"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <Button Text="," Grid.Row="3" Grid.Column="2"
+        BackgroundColor="Transparent" TextColor="Black" 
+        FontSize="30" FontAttributes="Bold"
+        Clicked="Click_Number_Speed"
+/>
+
+                <ImageButton Source="delall.svg" CornerRadius="30"
+             Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_DelAll_Speed" 
+             />
+
+                <ImageButton Source="del.svg" CornerRadius="30"
+             Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Margin="0,10,0,10"
+             Clicked="Click_Del_Speed"
+             />
+
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Start" HeightRequest="1" Margin="20,0,20,0" Color="Gray"/>
+
+
+
+
+            </Grid>
+
+            <Frame x:Name="FrameConvertTypeSpeed" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="КМ / Ч  [ км/ч ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="М / С  [ м/с ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="КМ / С  [ км/с ]" FontSize="18" HorizontalOptions="Center"
+           FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_Parameter_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="FrameConvertTypeTwoSpeed" IsVisible="false" Grid.Row="1" Grid.Column="0" BorderColor="#1C274C" BackgroundColor="White" CornerRadius="20">
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="КМ / Ч  [ км/ч ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="М / С  [ м/с ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="КМ / С  [ км/с ]" FontSize="18" HorizontalOptions="Center"
+                    FontAttributes="Bold" TextColor="#1C274C">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ParameterTwo_Speed" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+
+        <Grid x:Name="CryptoRate" RowDefinitions="80,40,*" IsVisible="false" ColumnDefinitions="*,*,*,*">
+            <ImageButton BackgroundColor="Transparent" Margin="20"
+                     Grid.Column="0" Clicked="Get_Calculate_Grid"
+                     Source="calculate" Grid.ColumnSpan="2"
+/>
+            <ImageButton Clicked="Get_transf_Grid" BackgroundColor="Transparent"
+                     Grid.Column="1" Margin="20"
+                     Source="transf.svg" Grid.ColumnSpan="2"
+/>
+            <ImageButton BackgroundColor="Transparent"
+                     Grid.Column="2" Grid.ColumnSpan="2"
+                     Source="rub.svg" Margin="20"
+/>
+            <Label x:Name="CourseUsd" Text="$ 00.00" Grid.Row="1" TextColor="Black" HorizontalOptions="Center"/>
+            <Label x:Name="CourseEur" Text="€ 00.00" Grid.Row="1" TextColor="Black" HorizontalOptions="Center" VerticalOptions="End"/>
+
+
+            <Frame Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="0" Margin="0,5,0,5" BackgroundColor="#f5f5f5">
+                <Entry x:Name="EntrySearchCrypto" IsSpellCheckEnabled="False" Placeholder="Поиск крипты" TextColor="#1C274C" FontAttributes="Bold" TextTransform="Uppercase" Completed="EntrySearchCrypto_Completed" HeightRequest="150">
+                    <Entry.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_Entry_Input" />
+                    </Entry.GestureRecognizers>
+                </Entry>
+            </Frame>
+            <ImageButton x:Name="RefreshCrypto" Grid.Row="1" Grid.Column="3" Source="refresh.svg" Clicked="Click_Refresh_Crypto"/>
+            
+            <ScrollView AutomationId="ScrollCrypto" x:Name="ScrollCrypto" Grid.Row="2" Grid.ColumnSpan="4">
+                <VerticalStackLayout x:Name="CryptoLayout2">
+                    <Label HeightRequest="150"/>
+                    <Image x:Name="LoadCrypto" Source="loading.svg" Rotation="0" HeightRequest="50"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <dxco:DXPopup x:Name="PopupCrypto" Grid.ColumnSpan="4" Grid.RowSpan="4" AllowScrim="True" ScrimColor="#7F404040"> 
+                <Grid x:Name="GridPopup" ColumnDefinitions="*,9*,*" RowDefinitions="*,2*,2*,2*" BackgroundColor="White" Padding="10" HeightRequest="600" WidthRequest="300">
+                    <ImageButton Source="close.svg" Grid.Column="2" Clicked="Click_Close_CryptoConverter"/>
+                    <Label x:Name="NameCryptoConverter" Grid.Column="1" Text="BTC" FontSize="20" TextColor="Gray"/>
+                    <Image Source="crypto.svg" Grid.Row="1"/>
+                    <Image Source="usd.svg" Grid.Row="2"/>
+                    <Image Source="rub.svg" Grid.Row="3"/>
+
+                    <dxe:NumericEdit x:Name="CryptoConverterCoin" AutomationId="CryptoConverterCoin" ValueChanged="CryptoConverter_Changes" MaxDecimalDigitCount="8" AllowNullValue="True" Grid.ColumnSpan="2" PlaceholderText="BTC" FocusedBorderColor="Gray" PlaceholderColor="DarkGray" Grid.Row="1" Grid.Column="1" Margin="10" IconVerticalAlignment="Center" TextVerticalAlignment="Center" TextHorizontalAlignment="Center" MaxValue="99999999"/>
+                    <dxe:NumericEdit x:Name="CryptoConverterUsd" AutomationId="CryptoConverterUsd" ValueChanged="CryptoConverter_Changes" MaxDecimalDigitCount="8" AllowNullValue="True" Grid.ColumnSpan="2" PlaceholderText="USD" FocusedBorderColor="Gray" PlaceholderColor="DarkGray" Grid.Row="2" Grid.Column="1" Margin="10" IconVerticalAlignment="Center" TextVerticalAlignment="Center" TextHorizontalAlignment="Center" MaxValue="99999999"/>
+                    <dxe:NumericEdit x:Name="CryptoConverterRub" AutomationId="CryptoConverterRub" ValueChanged="CryptoConverter_Changes" MaxDecimalDigitCount="8" AllowNullValue="True" Grid.ColumnSpan="2" PlaceholderText="RUB" FocusedBorderColor="Gray" PlaceholderColor="DarkGray" Grid.Row="3" Grid.Column="1" Margin="10" IconVerticalAlignment="Center" TextVerticalAlignment="Center" TextHorizontalAlignment="Center" MaxValue="99999999"/>
+                
+                </Grid>
+            </dxco:DXPopup>
+
+            <Grid x:Name="GridHideKayboard" Grid.ColumnSpan="5" Grid.RowSpan="5" IsVisible="false">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Click_Hide_Keyboard" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

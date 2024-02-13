@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+    	<OutputType>Exe</OutputType>
+		<UseMaui>true</UseMaui>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SingleProject>true</SingleProject>
+		<RootNamespace>Calculate_MauiDevExpress_1._0</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>Calculate_MauiDevExpress_1.0</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.Calculate_MauiDevExpress_1._0</ApplicationId>
+		<ApplicationIdGuid>F381F6FD-D44C-4BAE-BDA5-44FDFA22921D</ApplicationIdGuid>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<UseInterpreter Condition="$(TargetFramework.Contains('-ios')) AND '$(Configuration)' == 'Release'">True</UseInterpreter>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+
+		<!-- Splash Screen -->
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appicon.svg" />
+	  <None Remove="Resources\Images\close.svg" />
+	  <None Remove="Resources\Images\crypto.svg" />
+	  <None Remove="Resources\Images\usd.svg" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Maui.Controls" Version="23.2.4" />
+		<PackageReference Include="DevExpress.Maui.Core" Version="23.2.4" />
+		<PackageReference Include="DevExpress.Maui.Charts" Version="23.2.4" />
+		<PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.4" />
+		<PackageReference Include="DevExpress.Maui.Editors" Version="23.2.4" />
+		<PackageReference Include="DevExpress.Maui.DataGrid" Version="23.2.4" />
+		<PackageReference Include="DevExpress.Maui.Scheduler" Version="23.2.4" />
+		<TrimmableAssembly Include="DevExpress.Data.v23.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,6 @@
+<svg width="800px" height="800px" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.5" d="M666.667 200H100" stroke="white" stroke-width="50" stroke-linecap="round"/>
+<path opacity="0.5" d="M366.667 366.667H100" stroke="white" stroke-width="50" stroke-linecap="round"/>
+<path opacity="0.5" d="M366.667 533.333H100" stroke="white" stroke-width="50" stroke-linecap="round"/>
+<path d="M500 533.333L666.667 366.667M666.667 533.333L500 366.667" stroke="black" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
