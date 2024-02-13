@@ -154,6 +154,9 @@ namespace Calculate_MauiDevExpress_1._0
         {
             if (obj is Frame frm)
             {
+                CryptoConverterCoin.Value = 0;
+                CryptoConverterUsd.Value = 0;
+                CryptoConverterRub.Value = 0;
                 PopupCrypto.IsOpen = true;
                 NameCryptoConverter.Text = frm.AutomationId.Split("/")[0];
                 CryptoConverterCoin.PlaceholderText = frm.AutomationId.Split("/")[0];
@@ -1028,6 +1031,32 @@ namespace Calculate_MauiDevExpress_1._0
                 });
 
             });
+            foreach (var frame in CryptoLayout2.Children)
+            {
+                if (frame is Frame frm)
+                {
+                    frm.GestureRecognizers.Add(new TapGestureRecognizer
+                    {
+                        Command = new Command((obj) => ClickFrameCrypto(obj as Frame)),
+                        CommandParameter = frm
+                    });
+                    if (frm.Content is Microsoft.Maui.Controls.Grid child)
+                    {
+                        foreach (var lbl in child.Children)
+                        {
+                            if (lbl is Label lb)
+                            {
+                                lb.InputTransparent = true;
+                            }
+                            else if (lbl is Frame ff)
+                            {
+                                ff.InputTransparent = true;
+                            }
+                        }
+
+                    }
+                }
+            }
 
         }
 
@@ -1124,20 +1153,32 @@ namespace Calculate_MauiDevExpress_1._0
         {
             if (sender is NumericEdit numEdit)
             {
-                if (numEdit.AutomationId == "CryptoConverterCoin")
+                if (numEdit.AutomationId == "CryptoConverterCoin" && numEdit.IsEnabled)
                 {
-                    CryptoConverterUsd.Value = numEdit.Value * CourseCruptoActive;
-                    CryptoConverterRub.Value = Convert.ToDecimal(Convert.ToDouble(CryptoConverterUsd.Value) * Convert.ToDouble(CourseUsd.Text.Replace("$ ", "").Replace(".", ",")));
+                    CryptoConverterUsd.IsEnabled = false;
+                    CryptoConverterRub.IsEnabled = false;
+                    CryptoConverterUsd.Value = (decimal?)Math.Round((double)(numEdit.Value * CourseCruptoActive), 9);
+                    CryptoConverterRub.Value = (decimal?)Math.Round((double)(CryptoConverterUsd.Value * Convert.ToDecimal(Convert.ToDouble(CourseUsd.Text.Replace("$ ", "").Replace(".", ",")))), 9);
+                    CryptoConverterUsd.IsEnabled = true;
+                    CryptoConverterRub.IsEnabled = true;
                 }
-                else if (numEdit.AutomationId == "CryptoConverterUsd")
+                else if (numEdit.AutomationId == "CryptoConverterUsd" && numEdit.IsEnabled)
                 {
-                    CryptoConverterCoin.Value = numEdit.Value / CourseCruptoActive;
-                    CryptoConverterRub.Value = numEdit.Value * Convert.ToDecimal(CourseUsd.Text.Replace("$ ", "").Replace(".", ","));
+                    CryptoConverterCoin.IsEnabled = false;
+                    CryptoConverterRub.IsEnabled = false;
+                    CryptoConverterCoin.Value = (decimal?)Math.Round((double)(numEdit.Value / CourseCruptoActive), 9);
+                    CryptoConverterRub.Value = (decimal?)Math.Round((double)(numEdit.Value * Convert.ToDecimal(CourseUsd.Text.Replace("$ ", "").Replace(".", ","))), 9);
+                    CryptoConverterCoin.IsEnabled = true;
+                    CryptoConverterRub.IsEnabled = true;
                 }
-                else if (numEdit.AutomationId == "CryptoConverterRub")
+                else if (numEdit.AutomationId == "CryptoConverterRub" && numEdit.IsEnabled)
                 {
-                    CryptoConverterUsd.Value = numEdit.Value / Convert.ToDecimal(CourseUsd.Text.Replace("$ ", "").Replace(".", ","));
-                    CryptoConverterRub.Value = CryptoConverterUsd.Value / CourseCruptoActive;
+                    CryptoConverterCoin.IsEnabled = false;
+                    CryptoConverterUsd.IsEnabled = false;
+                    CryptoConverterUsd.Value = (decimal?)Math.Round((double)(numEdit.Value / Convert.ToDecimal(CourseUsd.Text.Replace("$ ", "").Replace(".", ","))), 9);
+                    CryptoConverterCoin.Value = (decimal?)Math.Round((double)(CryptoConverterUsd.Value / CourseCruptoActive), 9);
+                    CryptoConverterCoin.IsEnabled = true;
+                    CryptoConverterUsd.IsEnabled = true;
                 }
 
             }
