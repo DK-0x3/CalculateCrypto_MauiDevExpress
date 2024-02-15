@@ -1769,25 +1769,43 @@
             <Label x:Name="CourseUsd" Text="$ 00.00" Grid.Row="1" TextColor="Black" HorizontalOptions="Center"/>
             <Label x:Name="CourseEur" Text="€ 00.00" Grid.Row="1" TextColor="Black" HorizontalOptions="Center" VerticalOptions="End"/>
 
-
-            <Frame Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="0" Margin="0,5,0,5" BackgroundColor="#f5f5f5">
+            
+            <!--<Frame IsVisible="false" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="0" Margin="0,5,0,5" BackgroundColor="#f5f5f5">
                 <Entry x:Name="EntrySearchCrypto" IsSpellCheckEnabled="False" Placeholder="Поиск крипты" TextColor="#1C274C" FontAttributes="Bold" TextTransform="Uppercase" Completed="EntrySearchCrypto_Completed" HeightRequest="150">
                     <Entry.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Click_Entry_Input" />
                     </Entry.GestureRecognizers>
                 </Entry>
-            </Frame>
+            </Frame>-->
+
+            <dxe:AutoCompleteEdit x:Name="SearchCryptoAutoEdit" BackgroundColor="Transparent" NoResultsFoundText="Не найдено" FocusedBorderColor="Gray" SelectionChanged="EntrySearchCrypto_Completed" Margin="2" SubmitIconVisibility="Never" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextVerticalAlignment="Center" TextHorizontalAlignment="Start" BoxPadding="10" PlaceholderColor="Black" PlaceholderText="поиск крипты">
+                <dxe:AutoCompleteEdit.ItemsSourceProvider>
+                    <dxe:AsyncItemsSourceProvider ItemsRequested="AsyncItemsSourceProvider_ItemsRequested" />
+                </dxe:AutoCompleteEdit.ItemsSourceProvider>
+            </dxe:AutoCompleteEdit>
+
             <ImageButton x:Name="RefreshCrypto" Grid.Row="1" Grid.Column="3" Source="refresh.svg" Clicked="Click_Refresh_Crypto"/>
             
             <ScrollView AutomationId="ScrollCrypto" x:Name="ScrollCrypto" Grid.Row="2" Grid.ColumnSpan="4">
                 <VerticalStackLayout x:Name="CryptoLayout2">
-                    <Label HeightRequest="150"/>
-                    <Image x:Name="LoadCrypto" Source="loading.svg" Rotation="0" HeightRequest="50"/>
-
+                    <dxco:ShimmerView x:Name="LoadingViewCrypto">
+                        <dxco:ShimmerView.LoadingView>
+                            <VerticalStackLayout>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                                <Frame HeightRequest="150" Margin="15" BackgroundColor="#081d61" BorderColor="#1C274C"/>
+                            </VerticalStackLayout>
+                        </dxco:ShimmerView.LoadingView>
+                    </dxco:ShimmerView>
                 </VerticalStackLayout>
             </ScrollView>
 
-            <dxco:DXPopup x:Name="PopupCrypto" Grid.ColumnSpan="4" Grid.RowSpan="4" AllowScrim="True" ScrimColor="#7F404040"> 
+            <dxco:DXPopup x:Name="PopupCrypto" Grid.ColumnSpan="4" Grid.RowSpan="4" ScrimColor="#7F404040">
                 <Grid x:Name="GridPopup" ColumnDefinitions="*,9*,*" RowDefinitions="*,2*,2*,2*" BackgroundColor="White" Padding="10" HeightRequest="600" WidthRequest="300">
                     <ImageButton Source="close.svg" Grid.Column="2" Clicked="Click_Close_CryptoConverter"/>
                     <Label x:Name="NameCryptoConverter" Grid.Column="1" Text="BTC" FontSize="20" TextColor="Gray"/>

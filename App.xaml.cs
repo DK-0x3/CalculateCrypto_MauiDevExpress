@@ -12,6 +12,14 @@
             {
                 Preferences.Default.Set("Theme", "White");
             }
+            if (!Preferences.Default.ContainsKey("CryptoList"))
+            {
+                Preferences.Default.Set("CryptoList", "");
+            }
+            if (!Preferences.Default.ContainsKey("CryptoFavorites"))
+            {
+                Preferences.Default.Set("CryptoFavorites", "BTC|ETH|TON|TRX");
+            }
         }
         protected override void OnStart()
         {

@@ -1,6 +1,9 @@
 ﻿using Calculate_MauiDevExpress_1._0.Class;
+
+using DevExpress.Maui.Controls;
 using DevExpress.Maui.Editors;
 using System.Data;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Calculate_MauiDevExpress_1._0
@@ -16,6 +19,7 @@ namespace Calculate_MauiDevExpress_1._0
             InitializeComponent();
             _ = InitializeCrypto();
             _ = CourceUsdAndEur();
+            _ = SetCryptoList();
             timer = new Timer(TimerCallback, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(100));
 
             GridPopup.WidthRequest = (DeviceDisplay.MainDisplayInfo.Width / 3) * 0.8;
@@ -35,9 +39,23 @@ namespace Calculate_MauiDevExpress_1._0
                     BtnTheme.Source = "suntheme.svg";
                 }
             }
+            
+        }
+        
+        private async Task SetCryptoList()
+        {
+            Preferences.Default.Set("CryptoList", await Crypto.GetAllCrypto());
+            string x = Preferences.Default.Get("CryptoList", "null");
+            x = x.Replace("100000", "").Replace("10000", "").Replace("1000", "").Replace("100", "");
+            Preferences.Default.Set("CryptoList", x);
         }
         private async Task CourceUsdAndEur()
         {
+            List<string> CryptoList = Preferences.Default.Get("CryptoList", "null").Split("|").ToList();
+
+            SearchCryptoAutoEdit.ItemsSource = CryptoList;
+            
+            //FilteredItemsSourceProvider filter = new FilteredItemsSourceProvider() { ItemsSource = await Crypto.GetAllCrypto() , FilterCondition = DevExpress.Maui.Core.DataFilterCondition.Contains , FilterMembers = "Name"};
             CourseUsd.Text = $"$ {await Crypto.GetUsdToRubAsync("USD")}";
             CourseEur.Text = $"€ {await Crypto.GetUsdToRubAsync("EUR")}";
         }
@@ -85,20 +103,16 @@ namespace Calculate_MauiDevExpress_1._0
 
         private void TimerCallback(object state)
         {
-            if (CryptoLayout2.Children.Count <= 2)
-            {
-                LoadCrypto.Rotation += 5;
-            }
-            else
+            if (CryptoLayout2.Children.Count >= 2)
             {
                 timer?.Dispose();
+                LoadingViewCrypto.IsLoading = false;
             }
-
         }
 
         private async Task InitializeCrypto()
         {
-            List<string> CryptoList = new List<string>() { "BTCUSDT", "ETHUSDT", "BNBUSDT", "TRXUSDT", "TONUSDT", "DOGEUSDT", "MATICUSDT", "LTCUSDT" };
+            List<string> CryptoList = Preferences.Default.Get("CryptoFavorites", "BTC|ETH|TON|TRX").Split("|").ToList();
 
             try
             {
@@ -107,10 +121,11 @@ namespace Calculate_MauiDevExpress_1._0
                 foreach (string CryptoS in CryptoList)
                 {
                     var result = await Crypto.GetCryptoPriceMarket(CryptoS.Replace("USDT", ""));
-                    frames.Add(await Crypto.Card(CryptoS.Replace("USDT", " / USDT"), result.priceUSD.ToString().Replace(",", "."), result.percentChange24h.ToString().Replace(",", ".")));
+                    frames.Add(await Crypto.Card(CryptoS.Replace("USDT", ""), result.priceUSD.ToString().Replace(",", "."), result.percentChange24h.ToString().Replace(",", ".")));
 
                 }
                 double scrollX = ScrollCrypto.ScrollY;
+                LoadingViewCrypto.IsLoading = false;
                 CryptoLayout2.Children.Clear();
                 foreach (var frame in frames)
                 {
@@ -123,6 +138,7 @@ namespace Calculate_MauiDevExpress_1._0
                 if (CryptoLayout2.Children.Count <= 2)
                     CryptoLayout2.Add(new Label { Text = "ошибка соединения", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.End, TextColor = Colors.Grey });
             }
+
             foreach (var frame in CryptoLayout2.Children)
             {
                 if (frame is Frame frm)
@@ -144,9 +160,33 @@ namespace Calculate_MauiDevExpress_1._0
                             {
                                 ff.InputTransparent = true;
                             }
+                            else if (lbl is ImageButton mb)
+                            {
+                                mb.GestureRecognizers.Add(new TapGestureRecognizer
+                                {
+                                    Command = new Command((obj) => ClickFavoritesCrypto(obj as ImageButton)),
+                                    CommandParameter = mb
+                                });
+                            }
                         }
 
                     }
+                }
+            }
+        }
+        private void ClickFavoritesCrypto(object obj)
+        {
+            if (obj is ImageButton imb)
+            {
+                if (imb.Source.ToString().Replace("File: ", "") == "star.svg")
+                {
+                    imb.Source = "star_active.svg";
+                    Preferences.Default.Set("CryptoFavorites", Preferences.Default.Get("CryptoFavorites", "BTC|ETH|TON|TRX")+$"|{imb.AutomationId}");
+                }
+                else if (imb.Source.ToString().Replace("File: ", "") == "star_active.svg")
+                {
+                    imb.Source = "star.svg";
+                    Preferences.Default.Set("CryptoFavorites", Preferences.Default.Get("CryptoFavorites", "BTC|ETH|TON|TRX").Replace($"|{imb.AutomationId}", ""));
                 }
             }
         }
@@ -1002,7 +1042,6 @@ namespace Calculate_MauiDevExpress_1._0
             RefreshCrypto.IsEnabled = false;
             await Task.Run(() =>
             {
-                LoadCrypto.RotateTo(LoadCrypto.Rotation + 10000, 20000);
                 AnimationPlusAndMinusWhile = true;
                 Thread thread = new Thread(async () => { await AnimateRefreshCrypto(); });
                 thread.IsBackground = true;
@@ -1010,8 +1049,10 @@ namespace Calculate_MauiDevExpress_1._0
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    List<string> SearchCrypto = await Crypto.GetCryptoSearch(EntrySearchCrypto.Text);
-                    if (SearchCrypto.Count > 0 && EntrySearchCrypto.Text.Length > 1)
+                    List<string> SearchCrypto = [];
+                    SearchCrypto.Add(SearchCryptoAutoEdit.Text);
+                    
+                    if (SearchCrypto.Count > 0)
                     {
                         CryptoLayout2.Children.Clear();
                         foreach (string key in SearchCrypto)
@@ -1020,44 +1061,54 @@ namespace Calculate_MauiDevExpress_1._0
                             Frame f = await Crypto.Card(key.Replace("/", " / "), crypto.priceUSD.ToString().Replace(",", "."), crypto.percentChange24h.ToString());
                             CryptoLayout2.Add(f);
                         }
+                        foreach (var frame in CryptoLayout2.Children)
+                        {
+                            if (frame is Frame frm)
+                            {
+                                frm.GestureRecognizers.Add(new TapGestureRecognizer
+                                {
+                                    Command = new Command((obj) => ClickFrameCrypto(obj as Frame)),
+                                    CommandParameter = frm
+                                });
+                                if (frm.Content is Microsoft.Maui.Controls.Grid child)
+                                {
+                                    foreach (var lbl in child.Children)
+                                    {
+                                        if (lbl is Label lb)
+                                        {
+                                            lb.InputTransparent = true;
+                                        }
+                                        else if (lbl is Frame ff)
+                                        {
+                                            ff.InputTransparent = true;
+                                        }
+                                        else if (lbl is ImageButton mb)
+                                        {
+                                            mb.GestureRecognizers.Add(new TapGestureRecognizer
+                                            {
+                                                Command = new Command((obj) => ClickFavoritesCrypto(obj as ImageButton)),
+                                                CommandParameter = mb
+                                            });
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
                     }
                     else
                     {
                         CryptoLayout2.Children.Clear();
                         CryptoLayout2.Add(new Label { Text = "Ничего не найдено", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.End, TextColor = Colors.Grey });
                     }
+                    
                     AnimationPlusAndMinusWhile = false;
                     RefreshCrypto.IsEnabled = true;
+
                 });
 
             });
-            foreach (var frame in CryptoLayout2.Children)
-            {
-                if (frame is Frame frm)
-                {
-                    frm.GestureRecognizers.Add(new TapGestureRecognizer
-                    {
-                        Command = new Command((obj) => ClickFrameCrypto(obj as Frame)),
-                        CommandParameter = frm
-                    });
-                    if (frm.Content is Microsoft.Maui.Controls.Grid child)
-                    {
-                        foreach (var lbl in child.Children)
-                        {
-                            if (lbl is Label lb)
-                            {
-                                lb.InputTransparent = true;
-                            }
-                            else if (lbl is Frame ff)
-                            {
-                                ff.InputTransparent = true;
-                            }
-                        }
-
-                    }
-                }
-            }
-
+            
         }
 
         private async Task AnimateRefreshCrypto()
@@ -1076,10 +1127,9 @@ namespace Calculate_MauiDevExpress_1._0
         {
             await CourceUsdAndEur();
             RefreshCrypto.IsEnabled = false;
-            EntrySearchCrypto.Text = "";
+            SearchCryptoAutoEdit.Text = "";
             await Task.Run(() =>
             {
-                LoadCrypto.RotateTo(LoadCrypto.Rotation + 10000, 20000);
                 AnimationPlusAndMinusWhile = true;
                 Thread thread = new Thread(async () => { await AnimateRefreshCrypto(); });
                 thread.IsBackground = true;
@@ -1134,8 +1184,8 @@ namespace Calculate_MauiDevExpress_1._0
 
         private void Click_Hide_Keyboard(object sender, TappedEventArgs e)
         {
-            EntrySearchCrypto.IsEnabled = false;
-            EntrySearchCrypto.IsEnabled = true;
+            SearchCryptoAutoEdit.IsEnabled = false;
+            SearchCryptoAutoEdit.IsEnabled = true;
             GridHideKayboard.IsVisible = false;
         }
 
@@ -1182,6 +1232,15 @@ namespace Calculate_MauiDevExpress_1._0
                 }
 
             }
+        }
+
+        private void AsyncItemsSourceProvider_ItemsRequested(object sender, ItemsRequestEventArgs e)
+        {
+            List<string> CryptoList = Preferences.Default.Get("CryptoList", "null").Split("|").ToList();
+            e.Request = () =>
+            {
+                return CryptoList.Where(i => i.StartsWith(e.Text, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            };
         }
     }
 }

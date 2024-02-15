@@ -113,8 +113,23 @@ namespace Calculate_MauiDevExpress_1._0.Class
             {
                 Text = $"{plusOrMinus}{precent}%",
                 FontSize = 20,
-                TextColor = Color.Parse("#14FF00")
+                TextColor = Color.Parse("#14FF00"),
+                HorizontalOptions = LayoutOptions.End
             };
+            ImageButton imgBtnFavorite = new ImageButton
+            {
+                Source = "star.svg",
+                HeightRequest = 30,
+                WidthRequest = 30,
+                VerticalOptions = LayoutOptions.Start,
+                HorizontalOptions = LayoutOptions.End,
+                AutomationId = NameCrypto,
+                Opacity = 0.6
+            };
+            if (Preferences.Default.Get("CryptoFavorites", "BTC|ETH|TON|TRX").Contains(NameCrypto))
+            {
+                imgBtnFavorite.Source = "star_active.svg";
+            }
 
             if (plusOrMinus == '-')
             {
@@ -127,7 +142,8 @@ namespace Calculate_MauiDevExpress_1._0.Class
                 Margin = new Thickness(15),
                 BackgroundColor = Color.Parse("#1C274C"),
                 Content = grid,
-                AutomationId = $"{NameCrypto.Split(" / ")[0]}/{PriceCryptoUsd}"
+                AutomationId = $"{NameCrypto.Split(" / ")[0]}/{PriceCryptoUsd}",
+                BorderColor = Color.Parse("#f5f5f5")
             };
 
             Frame frame2 = new Frame
@@ -136,7 +152,8 @@ namespace Calculate_MauiDevExpress_1._0.Class
                 Opacity = 0.9,
                 CornerRadius = 30,
                 Padding = 0,
-                Content = priceLabel
+                Content = priceLabel,
+                BorderColor = Color.Parse("#f5f5f5")
             };
 
             // Определения строк и столбцов
@@ -154,7 +171,8 @@ namespace Calculate_MauiDevExpress_1._0.Class
             grid2.Add(equivalentLabel, 1, 0);
             grid.Add(grid2, 0, 1);
             Grid.SetColumnSpan(grid2, 2);
-            grid.Add(percentLabel, 1, 0);
+            grid.Add(percentLabel, 0, 0);
+            grid.Add(imgBtnFavorite, 1, 0);
 
             return frame;
         }
@@ -204,7 +222,6 @@ namespace Calculate_MauiDevExpress_1._0.Class
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
                 return (0, 0, 0); // Return default values in case of error
             }
         }
@@ -271,6 +288,51 @@ namespace Calculate_MauiDevExpress_1._0.Class
                 else
                 {
                     return ["null"];
+                }
+            }
+        }
+
+        public static async Task<string> GetAllCrypto()
+        {
+            // Создаем HttpClient
+            using var client = new HttpClient();
+
+            // Загружаем JSON с веб-страницы
+            var response = await client.GetAsync("https://api.bybit.com/v2/public/symbols");
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            // Парсим JSON
+            using (JsonDocument document = JsonDocument.Parse(responseBody))
+            {
+                // Получаем корневой элемент
+                JsonElement root = document.RootElement;
+
+                // Проверяем, что корневой элемент - объект
+                if (root.ValueKind == JsonValueKind.Object)
+                {
+                    // Получаем массив symbols
+                    JsonElement symbolsArray = root.GetProperty("result");
+                    string result = "";
+                    // Итерируем по элементам массива
+                    foreach (JsonElement symbolname in symbolsArray.EnumerateArray())
+                    {
+                        // Получаем значение base_currency
+                        string? baseCurrency = symbolname.GetProperty("base_currency").GetString();
+                        string? quoteCurrency = symbolname.GetProperty("quote_currency").GetString();
+
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
+                        if (baseCurrency != null && quoteCurrency.Contains("USDT"))
+                        {
+                            result=$"{result}|{baseCurrency}";
+                        }
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
+                    }
+                    return result;
+                }
+                else
+                {
+                    return "null";
                 }
             }
         }

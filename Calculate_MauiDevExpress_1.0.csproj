@@ -19,7 +19,7 @@
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
 		<UseInterpreter Condition="$(TargetFramework.Contains('-ios')) AND '$(Configuration)' == 'Release'">True</UseInterpreter>
 	</PropertyGroup>
 	<ItemGroup>
@@ -40,11 +40,61 @@
 	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\Images\close.svg" />
 	  <None Remove="Resources\Images\crypto.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_arrow.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_calculate.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_close.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_copy.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_crypto.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_data.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_del.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_delall.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_length.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_loading.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_pickerlist.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_refresh.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_rub.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_speed.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_square.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_swap.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_system.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_temperature.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_time.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_transf.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_usd.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_volume.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_weight.svg" />
+	  <None Remove="Resources\Images\star.svg" />
+	  <None Remove="Resources\Images\star_active.svg" />
 	  <None Remove="Resources\Images\usd.svg" />
 	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.svg" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_arrow.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_calculate.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_close.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_copy.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_crypto.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_data.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_del.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_delall.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_length.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_loading.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_pickerlist.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_refresh.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_rub.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_speed.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_square.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_swap.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_system.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_temperature.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_time.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_transf.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_usd.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_volume.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_weight.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
