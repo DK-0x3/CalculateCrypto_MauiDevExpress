@@ -146,8 +146,11 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="ResultText" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" Text="" VerticalOptions="End" FontSize="35" FontAttributes="Bold"/>
-
+                    <Label x:Name="ResultText" Grid.Row="1" TextColor="#030303" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="End" Text="" VerticalOptions="End" FontSize="35" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Click_ResultIsTask" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
                     <Label x:Name="TextOfTask" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" HorizontalOptions="End" Text="" VerticalOptions="End" FontSize="25" TextColor="#262626" FontAttributes="Bold"/>
 
@@ -203,51 +206,51 @@
                         <TapGestureRecognizer Tapped="Click_Image" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Площадь" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Площадь" TextColor="#030303" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="data.svg" Grid.Column="1" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Click_Image_Data" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Данные" Grid.Column="1"  VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Данные" TextColor="#030303" Grid.Column="1"  VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="length.svg" Grid.Column="2" Grid.Row="0" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Click_Image_Lenght" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Длина" Grid.Column="2" Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Длина" TextColor="#030303" Grid.Column="2" Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="weight.svg" Grid.Column="0" Grid.Row="1" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Click_Image_Weight" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Масса" Grid.Column="0" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Масса" TextColor="#030303" Grid.Column="0" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="system.svg" Grid.Column="1" Grid.Row="1" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Click_Image_NumberS" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="С. Счисления" Grid.Column="1" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="С. Счисления" TextColor="#030303" Grid.Column="1" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="speed.svg" Grid.Column="2" Grid.Row="1" VerticalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Click_Image_Speed" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Скорость" Grid.Column="2" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Скорость" TextColor="#030303" Grid.Column="2" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="temperature.svg" Opacity="0.3" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
-                <Label Text="Температура⌛️" Grid.Column="0" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Температура⌛️" TextColor="#030303" Grid.Column="0" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="time.svg" Opacity="0.3" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
-                <Label Text="Время⌛️" Grid.Column="1" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Время⌛️" TextColor="#030303" Grid.Column="1" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
 
                 <Image Source="volume.svg" Opacity="0.3" Grid.Column="2" Grid.Row="2" VerticalOptions="Center"/>
-                <Label Text="Обьем⌛️" Grid.Column="2" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Label Text="Обьем⌛️" TextColor="#030303" Grid.Column="2" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
 
 
 
@@ -281,12 +284,12 @@
                         <TapGestureRecognizer Tapped="Click_Back_square" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Площадь" HorizontalOptions="Center" VerticalOptions="Center"
+                <Label TextColor="#030303" Text="Площадь" HorizontalOptions="Center" VerticalOptions="Center"
                        FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
                 />
 
                 <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
-                    <Label x:Name="ConvertOne" Text="км²" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertOne" TextColor="#030303" Text="км²" VerticalOptions="Center" HorizontalOptions="Center"
                            FontAttributes="Bold" FontSize="25"
                     >
                         <Label.GestureRecognizers>
@@ -310,7 +313,7 @@
 
                 <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
 
-                    <Label x:Name="ConvertTwo" Text="м²" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertTwo" TextColor="#030303" Text="м²" VerticalOptions="Center" HorizontalOptions="Center"
                            FontAttributes="Bold" FontSize="25"
                     >
                         <Label.GestureRecognizers>
@@ -325,10 +328,10 @@
                     </Image>
                 </Grid>
 
-                <Label x:Name="TextCountSquare" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextCountSquare" TextColor="#030303" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
                        FontSize="30" />
 
-                <Label x:Name="TextResultSquare" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextResultSquare" TextColor="#030303" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
                        FontSize="30" />
 
             </Grid>
@@ -540,12 +543,12 @@
                         <TapGestureRecognizer Tapped="Click_Back_Data" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Данные" HorizontalOptions="Center" VerticalOptions="Center"
+                <Label Text="Данные" TextColor="#030303" HorizontalOptions="Center" VerticalOptions="Center"
                FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
         />
 
                 <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
-                    <Label x:Name="ConvertOneData" Text="ГБ" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertOneData" TextColor="#030303" Text="ГБ" VerticalOptions="Center" HorizontalOptions="Center"
                    FontAttributes="Bold" FontSize="25"
             >
                         <Label.GestureRecognizers>
@@ -584,10 +587,10 @@
                     </Image>
                 </Grid>
 
-                <Label x:Name="TextCountData" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextCountData" TextColor="#030303" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
                FontSize="30" />
 
-                <Label x:Name="TextResultData" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextResultData" TextColor="#030303" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
                FontSize="30" />
 
             </Grid>
@@ -799,12 +802,12 @@
                         <TapGestureRecognizer Tapped="Click_Back_Lenght" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Длина" HorizontalOptions="Center" VerticalOptions="Center"
+                <Label Text="Длина" TextColor="#030303" HorizontalOptions="Center" VerticalOptions="Center"
        FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
 />
 
                 <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
-                    <Label x:Name="ConvertOneLenght" Text="КМ" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertOneLenght" TextColor="#030303" Text="КМ" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -828,9 +831,8 @@
 
                 <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
 
-                    <Label x:Name="ConvertTwoLenght" Text="М" VerticalOptions="Center" HorizontalOptions="Center"
-           FontAttributes="Bold" FontSize="25"
-    >
+                    <Label x:Name="ConvertTwoLenght" TextColor="#030303" Text="М" VerticalOptions="Center" HorizontalOptions="Center"
+           FontAttributes="Bold" FontSize="25">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Click_Open_TypeTwo_Lenght" />
                         </Label.GestureRecognizers>
@@ -843,10 +845,10 @@
                     </Image>
                 </Grid>
 
-                <Label x:Name="TextCountLenght" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextCountLenght" TextColor="#030303" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
-                <Label x:Name="TextResultLenght" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextResultLenght" TextColor="#030303" Text="" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
             </Grid>
@@ -1046,12 +1048,12 @@
                         <TapGestureRecognizer Tapped="Click_Back_Weight" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Масса" HorizontalOptions="Center" VerticalOptions="Center"
+                <Label Text="Масса" TextColor="#030303" HorizontalOptions="Center" VerticalOptions="Center"
        FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
 />
 
                 <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
-                    <Label x:Name="ConvertOneWeight" Text="КГ" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertOneWeight" TextColor="#030303" Text="КГ" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -1075,7 +1077,7 @@
 
                 <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
 
-                    <Label x:Name="ConvertTwoWeight" Text="Г" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertTwoWeight" TextColor="#030303" Text="Г" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -1090,10 +1092,10 @@
                     </Image>
                 </Grid>
 
-                <Label x:Name="TextCountWeight" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextCountWeight" TextColor="#030303" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
-                <Label x:Name="TextResultWeight" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextResultWeight" TextColor="#030303" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
             </Grid>
@@ -1293,12 +1295,12 @@
                         <TapGestureRecognizer Tapped="Click_Back_NumberS" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Системы Счисления" HorizontalOptions="Center" VerticalOptions="Center"
+                <Label Text="Системы Счисления" TextColor="#030303" HorizontalOptions="Center" VerticalOptions="Center"
        FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
 />
 
                 <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
-                    <Label x:Name="ConvertOneNumberS" Text="10" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertOneNumberS" TextColor="#030303" Text="10" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -1322,7 +1324,7 @@
 
                 <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
 
-                    <Label x:Name="ConvertTwoNumberS" Text="16" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertTwoNumberS" TextColor="#030303" Text="16" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -1337,10 +1339,10 @@
                     </Image>
                 </Grid>
 
-                <Label x:Name="TextCountNumberS" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextCountNumberS" TextColor="#030303" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
-                <Label x:Name="TextResultNumberS" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextResultNumberS" TextColor="#030303" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
             </Grid>
@@ -1555,7 +1557,7 @@
                         <TapGestureRecognizer Tapped="Click_Back_Speed" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Скорость" HorizontalOptions="Center" VerticalOptions="Center"
+                <Label Text="Скорость" TextColor="#030303" HorizontalOptions="Center" VerticalOptions="Center"
        FontSize="20" Grid.Column="0" Grid.ColumnSpan="4"
 />
 
@@ -1584,7 +1586,7 @@
 
                 <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
 
-                    <Label x:Name="ConvertTwoSpeed" Text="м/с" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertTwoSpeed" TextColor="#030303" Text="м/с" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -1599,10 +1601,10 @@
                     </Image>
                 </Grid>
 
-                <Label x:Name="TextCountSpeed" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextCountSpeed" TextColor="#030303" Text="" Grid.Row="1" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
-                <Label x:Name="TextResultSpeed" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
+                <Label x:Name="TextResultSpeed" TextColor="#030303" Text="0" Grid.Row="2" HorizontalOptions="Start" Margin="15,0,0,0" VerticalOptions="Center"
        FontSize="30" />
 
             </Grid>
@@ -1766,8 +1768,8 @@
                      Grid.Column="2" Grid.ColumnSpan="2"
                      Source="rub.svg" Margin="20"
 />
-            <Label x:Name="CourseUsd" Text="$ 00.00" Grid.Row="1" TextColor="Black" HorizontalOptions="Center"/>
-            <Label x:Name="CourseEur" Text="€ 00.00" Grid.Row="1" TextColor="Black" HorizontalOptions="Center" VerticalOptions="End"/>
+            <Label x:Name="CourseUsd" TextColor="#030303" Text="$ 00.00" Grid.Row="1" HorizontalOptions="Center"/>
+            <Label x:Name="CourseEur" TextColor="#030303" Text="€ 00.00" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End"/>
 
             
             <!--<Frame IsVisible="false" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="0" Margin="0,5,0,5" BackgroundColor="#f5f5f5">
@@ -1778,7 +1780,7 @@
                 </Entry>
             </Frame>-->
 
-            <dxe:AutoCompleteEdit x:Name="SearchCryptoAutoEdit" BackgroundColor="Transparent" NoResultsFoundText="Не найдено" FocusedBorderColor="Gray" SelectionChanged="EntrySearchCrypto_Completed" Margin="2" SubmitIconVisibility="Never" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextVerticalAlignment="Center" TextHorizontalAlignment="Start" BoxPadding="10" PlaceholderColor="Black" PlaceholderText="поиск крипты">
+            <dxe:AutoCompleteEdit x:Name="SearchCryptoAutoEdit" BackgroundColor="Transparent" NoResultsFoundText="Не найдено" FocusedBorderColor="Gray" SelectionChanged="EntrySearchCrypto_Completed" Margin="2" SubmitIconVisibility="Never" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextVerticalAlignment="Center" TextHorizontalAlignment="Start" TextColor="Black" DropDownBackgroundColor="#f5f5f5" IconColor="Gray" BoxPadding="10" PlaceholderColor="Black" PlaceholderText="поиск крипты">
                 <dxe:AutoCompleteEdit.ItemsSourceProvider>
                     <dxe:AsyncItemsSourceProvider ItemsRequested="AsyncItemsSourceProvider_ItemsRequested" />
                 </dxe:AutoCompleteEdit.ItemsSourceProvider>
@@ -1805,8 +1807,8 @@
                 </VerticalStackLayout>
             </ScrollView>
 
-            <dxco:DXPopup x:Name="PopupCrypto" Grid.ColumnSpan="4" Grid.RowSpan="4" ScrimColor="#7F404040">
-                <Grid x:Name="GridPopup" ColumnDefinitions="*,9*,*" RowDefinitions="*,2*,2*,2*" BackgroundColor="White" Padding="10" HeightRequest="600" WidthRequest="300">
+            <dxco:DXPopup x:Name="PopupCrypto" Grid.ColumnSpan="4" Grid.RowSpan="4" ScrimColor="#7F404040" ShadowColor="Black">
+                <Grid x:Name="GridPopup" ColumnDefinitions="*,9*,*" RowDefinitions="*,2*,2*,2*" Padding="10" BackgroundColor="#f5f5f5" HeightRequest="600" WidthRequest="300">
                     <ImageButton Source="close.svg" Grid.Column="2" Clicked="Click_Close_CryptoConverter"/>
                     <Label x:Name="NameCryptoConverter" Grid.Column="1" Text="BTC" FontSize="20" TextColor="Gray"/>
                     <Image Source="crypto.svg" Grid.Row="1"/>

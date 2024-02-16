@@ -96,6 +96,9 @@
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_volume.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_weight.svg" />
 	</ItemGroup>
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
@@ -110,8 +113,5 @@
 		<PackageReference Include="DevExpress.Maui.DataGrid" Version="23.2.4" />
 		<PackageReference Include="DevExpress.Maui.Scheduler" Version="23.2.4" />
 		<TrimmableAssembly Include="DevExpress.Data.v23.2" />
-	</ItemGroup>
-	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash.svg" />
 	</ItemGroup>
 </Project>

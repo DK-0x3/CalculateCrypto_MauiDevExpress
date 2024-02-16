@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.Maui.Controls;
+using DevExpress.Maui.Editors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,7 @@ namespace Calculate_MauiDevExpress_1._0
                 {
                     if (IsInScrollView(label).AutomationId != "ScrollCrypto")
                     {
-                        if (label.TextColor == Colors.Black)
+                        if (label.TextColor.ToRgbaHex() == Color.Parse("#030303").ToRgbaHex())
                         {
                             label.TextColor = Color.Parse("#f5f5f5");
                         }
@@ -75,6 +77,29 @@ namespace Calculate_MauiDevExpress_1._0
                 foreach (var entry in MainPage.GetVisualTreeDescendants().OfType<Entry>())
                 {
                     entry.TextColor = Color.Parse("#f5f5f5");
+                }
+
+                foreach (var autocomedit in MainPage.GetVisualTreeDescendants().OfType<AutoCompleteEdit>())
+                {
+                    autocomedit.PlaceholderColor = Color.Parse("#5c5c5c");
+                    autocomedit.TextColor = Color.Parse("#f2f2f2");
+                    autocomedit.DropDownBackgroundColor = Color.Parse("#1C274C");
+                    autocomedit.DropDownItemTextColor = Color.Parse("#f5f5f5");
+                    autocomedit.IconColor = Color.Parse("#7a7a7a");
+                }
+                foreach (var popup in MainPage.GetVisualTreeDescendants().OfType<DXPopup>())
+                {
+                    foreach(var grid in popup.GetVisualTreeDescendants().OfType<Grid>())
+                    {
+                        grid.BackgroundColor = Color.Parse("#152147");
+                        foreach (var element in grid.Children)
+                        {
+                            if (element is NumericEdit NEdit)
+                            {
+                                NEdit.TextColor = Color.Parse("#f2f2f2");
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -142,6 +167,29 @@ namespace Calculate_MauiDevExpress_1._0
                 foreach (var entry in MainPage.GetVisualTreeDescendants().OfType<Entry>())
                 {
                     entry.TextColor = Color.Parse("#1C274C");
+                }
+
+                foreach (var autocomedit in MainPage.GetVisualTreeDescendants().OfType<AutoCompleteEdit>())
+                {
+                    autocomedit.PlaceholderColor = Colors.Black;
+                    autocomedit.TextColor = Colors.Black;
+                    autocomedit.DropDownBackgroundColor = Color.Parse("#f5f5f5");
+                    autocomedit.DropDownItemTextColor = Colors.Black;
+                    autocomedit.IconColor = Colors.Gray;
+                }
+                foreach (var popup in MainPage.GetVisualTreeDescendants().OfType<DXPopup>())
+                {
+                    foreach (var grid in popup.GetVisualTreeDescendants().OfType<Grid>())
+                    {
+                        grid.BackgroundColor = Color.Parse("#f5f5f5");
+                        foreach (var element in grid.Children)
+                        {
+                            if (element is NumericEdit NEdit)
+                            {
+                                NEdit.TextColor = Colors.Black;
+                            }
+                        }
+                    }
                 }
             }
         }

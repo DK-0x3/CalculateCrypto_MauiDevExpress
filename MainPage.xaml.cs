@@ -132,9 +132,12 @@ namespace Calculate_MauiDevExpress_1._0
                     CryptoLayout2.Children.Add(frame);
                 }
                 await ScrollCrypto.ScrollToAsync(0, scrollX, true);
+                SearchCryptoAutoEdit.IsEnabled = true;
             }
             catch
             {
+                LoadingViewCrypto.IsLoading = false;
+                SearchCryptoAutoEdit.IsEnabled = false;
                 if (CryptoLayout2.Children.Count <= 2)
                     CryptoLayout2.Add(new Label { Text = "ошибка соединения", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.End, TextColor = Colors.Grey });
             }
@@ -1125,27 +1128,30 @@ namespace Calculate_MauiDevExpress_1._0
         [Obsolete]
         private async void Click_Refresh_Crypto(object sender, EventArgs e)
         {
-            await CourceUsdAndEur();
-            RefreshCrypto.IsEnabled = false;
-            SearchCryptoAutoEdit.Text = "";
-            await Task.Run(() =>
+            try
             {
-                AnimationPlusAndMinusWhile = true;
-                Thread thread = new Thread(async () => { await AnimateRefreshCrypto(); });
-                thread.IsBackground = true;
-                thread.Start();
-                Device.BeginInvokeOnMainThread(async () =>
+                await CourceUsdAndEur();
+                RefreshCrypto.IsEnabled = false;
+                SearchCryptoAutoEdit.Text = "";
+                await Task.Run(() =>
                 {
-                    await InitializeCrypto();
-                    AnimationPlusAndMinusWhile = false;
-                    RefreshCrypto.IsEnabled = true;
+                    AnimationPlusAndMinusWhile = true;
+                    Thread thread = new Thread(async () => { await AnimateRefreshCrypto(); });
+                    thread.IsBackground = true;
+                    thread.Start();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await InitializeCrypto();
+                        AnimationPlusAndMinusWhile = false;
+                        RefreshCrypto.IsEnabled = true;
+                    });
+
                 });
+            }
+            catch
+            {
 
-            });
-
-
-
-
+            }
         }
 
         private async void ClickTheme(object sender, EventArgs e)
@@ -1241,6 +1247,11 @@ namespace Calculate_MauiDevExpress_1._0
             {
                 return CryptoList.Where(i => i.StartsWith(e.Text, StringComparison.CurrentCultureIgnoreCase)).ToList();
             };
+        }
+
+        private void Click_ResultIsTask(object sender, TappedEventArgs e)
+        {
+            TextOfTask.Text = ResultText.Text;
         }
     }
 }
