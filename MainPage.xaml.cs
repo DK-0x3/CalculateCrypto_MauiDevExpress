@@ -183,12 +183,12 @@ namespace Calculate_MauiDevExpress_1._0
         {
             if (obj is ImageButton imb)
             {
-                if (imb.Source.ToString().Replace("File: ", "") == "star.svg")
+                if (imb.Source.ToString().Replace("File: ", "") == "star.svg" || imb.Source.ToString().Replace("File: ", "") == "dark_star.svg")
                 {
                     imb.Source = "star_active.svg";
                     Preferences.Default.Set("CryptoFavorites", Preferences.Default.Get("CryptoFavorites", "BTC|ETH|TON|TRX")+$"|{imb.AutomationId}");
                 }
-                else if (imb.Source.ToString().Replace("File: ", "") == "star_active.svg")
+                else if (imb.Source.ToString().Replace("File: ", "") == "star_active.svg" || imb.Source.ToString().Replace("File: ", "") == "dark_star_active.svg")
                 {
                     imb.Source = "star.svg";
                     Preferences.Default.Set("CryptoFavorites", Preferences.Default.Get("CryptoFavorites", "BTC|ETH|TON|TRX").Replace($"|{imb.AutomationId}", ""));
@@ -1158,36 +1158,44 @@ namespace Calculate_MauiDevExpress_1._0
 
         private async void ClickTheme(object sender, EventArgs e)
         {
-            if (sender is ImageButton btn)
+            try
             {
-                if (Preferences.Default.Get("Theme", "White") == "White")
+                if (sender is ImageButton btn)
                 {
-                    await MainGrid.FadeTo(0, 300);
-                    MainGrid.IsVisible = false;
+                    if (Preferences.Default.Get("Theme", "White") == "White")
+                    {
+                        await MainGrid.FadeTo(0, 300);
+                        MainGrid.IsVisible = false;
 
-                    MainContent.BackgroundColor = Color.Parse("#1C274C");
-                    ThemeSet.SetDarkTheme(this);
-                    btn.Source = "suntheme.svg";
-                    Preferences.Default.Set("Theme", "Dark");
+                        MainContent.BackgroundColor = Color.Parse("#1C274C");
+                        ThemeSet.SetDarkTheme(this);
+                        btn.Source = "suntheme.svg";
+                        Preferences.Default.Set("Theme", "Dark");
 
-                    MainGrid.IsVisible = true;
-                    await MainGrid.FadeTo(1, 400);
+                        MainGrid.IsVisible = true;
+                        await MainGrid.FadeTo(1, 400);
+                    }
+                    else if (Preferences.Default.Get("Theme", "White") == "Dark")
+                    {
+                        await MainGrid.FadeTo(0, 300);
+                        MainGrid.IsVisible = false;
+
+                        MainContent.BackgroundColor = Color.Parse("#fff");
+                        ThemeSet.SetWhiteTheme(this);
+                        btn.Source = "moontheme.svg";
+                        Preferences.Default.Set("Theme", "White");
+
+                        MainGrid.IsVisible = true;
+                        await MainGrid.FadeTo(1, 400);
+                    }
                 }
-                else if (Preferences.Default.Get("Theme", "White") == "Dark")
-                {
-                    await MainGrid.FadeTo(0, 300);
-                    MainGrid.IsVisible = false;
-
-                    MainContent.BackgroundColor = Color.Parse("#fff");
-                    ThemeSet.SetWhiteTheme(this);
-                    btn.Source = "moontheme.svg";
-                    Preferences.Default.Set("Theme", "White");
-
-                    MainGrid.IsVisible = true;
-                    await MainGrid.FadeTo(1, 400);
-                }
+                StartGrid.IsVisible = false; StartGrid.IsVisible = true;
             }
-            StartGrid.IsVisible = false; StartGrid.IsVisible = true;
+            catch (Exception ex)
+            { 
+                TextOfTask.Text = ex.Message;
+            }
+            
         }
 
         private void Click_Hide_Keyboard(object sender, TappedEventArgs e)
@@ -1260,5 +1268,6 @@ namespace Calculate_MauiDevExpress_1._0
         {
             PopupPushIsTimeTransf.IsOpen = true;
         }
+
     }
 }

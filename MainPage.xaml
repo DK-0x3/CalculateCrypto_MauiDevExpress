@@ -11,7 +11,8 @@
              ios:Page.UseSafeArea="true"
              x:Class="Calculate_MauiDevExpress_1._0.MainPage" x:Name="MainContent">
 
-    <Grid x:Name="MainGrid">
+        <Grid x:Name="MainGrid" InputTransparent="False">
+            
         <Grid x:Name="StartGrid" Margin="0,0,0,15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -588,7 +589,7 @@
 
                 <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
 
-                    <Label x:Name="ConvertTwoData" Text="МБ" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertTwoData" TextColor="#030303" Text="МБ" VerticalOptions="Center" HorizontalOptions="Center"
                    FontAttributes="Bold" FontSize="25"
             >
                         <Label.GestureRecognizers>
@@ -1578,7 +1579,7 @@
 />
 
                 <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="11*,7*" Margin="0,0,15,0">
-                    <Label x:Name="ConvertOneSpeed" Text="км/ч" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Label x:Name="ConvertOneSpeed" TextColor="#030303" Text="км/ч" VerticalOptions="Center" HorizontalOptions="Center"
            FontAttributes="Bold" FontSize="25"
     >
                         <Label.GestureRecognizers>
@@ -1838,4 +1839,5 @@
 
 
     </Grid>
+
 </ContentPage>

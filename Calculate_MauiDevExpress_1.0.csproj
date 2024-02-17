@@ -55,6 +55,8 @@
 	  <None Remove="Resources\Images\DarkTheme\dark_rub.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_speed.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_square.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_star.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_star_active.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_swap.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_system.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_tea.svg" />
@@ -89,6 +91,8 @@
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_rub.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_speed.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_square.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_star.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_star_active.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_swap.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_system.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_tea.svg" />

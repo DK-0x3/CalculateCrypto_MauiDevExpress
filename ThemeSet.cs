@@ -103,92 +103,99 @@ namespace Calculate_MauiDevExpress_1._0
         }
         public static void SetWhiteTheme(Page MainPage)
         {
-            if (MainPage != null)
+            try
             {
-                var labels = MainPage.GetVisualTreeDescendants().OfType<Label>();
-
-                foreach (var label in labels)
+                if (MainPage != null)
                 {
-                    if (IsInScrollView(label).AutomationId != "ScrollCrypto")
+                    var labels = MainPage.GetVisualTreeDescendants().OfType<Label>();
+
+                    foreach (var label in labels)
                     {
-                        if (label.TextColor.ToRgbaHex() == Color.Parse("#f5f5f5").ToRgbaHex())
+                        if (IsInScrollView(label).AutomationId != "ScrollCrypto")
                         {
-                            label.TextColor = Colors.Black;
-                        }
-                        else if (label.TextColor.ToRgbaHex() == Color.Parse("#f2f2f2").ToRgbaHex())
-                        {
-                            label.TextColor = Color.Parse("#262626");
-                        }
-                    }
-
-                }
-                var BtnImgs = MainPage.GetVisualTreeDescendants().OfType<ImageButton>();
-
-                foreach (var btn in BtnImgs)
-                {
-                    btn.Source = $"{btn.Source.ToString().Replace("File: ", "").Replace("dark_", "")}";
-                    btn.BackgroundColor = Colors.Transparent;
-                }
-
-                var Imgs = MainPage.GetVisualTreeDescendants().OfType<Image>();
-
-                foreach (var img in Imgs)
-                {
-                    img.Source = $"{img.Source.ToString().Replace("File: ", "").Replace("dark_", "")}";
-                }
-
-                var Btns = MainPage.GetVisualTreeDescendants().OfType<Button>();
-
-                foreach (var btn in Btns)
-                {
-                    btn.BackgroundColor = Colors.Transparent;
-                    btn.TextColor = Color.Parse("#1C274C");
-                }
-
-                var Frames = MainPage.GetVisualTreeDescendants().OfType<Frame>();
-
-                foreach (var frm in Frames)
-                {
-
-                    if (frm.BackgroundColor.ToRgbaHex() != Color.Parse("#1C274C").ToRgbaHex() && frm.BackgroundColor.ToRgbaHex() != Colors.Transparent.ToRgbaHex())
-                    {
-
-                        frm.BackgroundColor = Color.Parse("#f2f2f2");
-                        foreach (var lbl in frm.GetVisualTreeDescendants().OfType<Label>())
-                        {
-                            lbl.TextColor = Color.Parse("#1C274C");
-                        }
-
-                    }
-                }
-
-                foreach (var entry in MainPage.GetVisualTreeDescendants().OfType<Entry>())
-                {
-                    entry.TextColor = Color.Parse("#1C274C");
-                }
-
-                foreach (var autocomedit in MainPage.GetVisualTreeDescendants().OfType<AutoCompleteEdit>())
-                {
-                    autocomedit.PlaceholderColor = Colors.Black;
-                    autocomedit.TextColor = Colors.Black;
-                    autocomedit.DropDownBackgroundColor = Color.Parse("#f5f5f5");
-                    autocomedit.DropDownItemTextColor = Colors.Black;
-                    autocomedit.IconColor = Colors.Gray;
-                }
-                foreach (var popup in MainPage.GetVisualTreeDescendants().OfType<DXPopup>())
-                {
-                    foreach (var grid in popup.GetVisualTreeDescendants().OfType<Grid>())
-                    {
-                        grid.BackgroundColor = Color.Parse("#f5f5f5");
-                        foreach (var element in grid.Children)
-                        {
-                            if (element is NumericEdit NEdit)
+                            if (label.TextColor.ToRgbaHex() == Color.Parse("#f5f5f5").ToRgbaHex())
                             {
-                                NEdit.TextColor = Colors.Black;
+                                label.TextColor = Color.Parse("#030303");
+                            }
+                            else if (label.TextColor.ToRgbaHex() == Color.Parse("#f2f2f2").ToRgbaHex())
+                            {
+                                label.TextColor = Color.Parse("#262626");
+                            }
+                        }
+
+                    }
+                    var BtnImgs = MainPage.GetVisualTreeDescendants().OfType<ImageButton>();
+
+                    foreach (var btn in BtnImgs)
+                    {
+                        btn.Source = $"{btn.Source.ToString().Replace("File: ", "").Replace("dark_", "")}";
+                        btn.BackgroundColor = Colors.Transparent;
+                    }
+
+                    var Imgs = MainPage.GetVisualTreeDescendants().OfType<Image>();
+
+                    foreach (var img in Imgs)
+                    {
+                        img.Source = $"{img.Source.ToString().Replace("File: ", "").Replace("dark_", "")}";
+                    }
+
+                    var Btns = MainPage.GetVisualTreeDescendants().OfType<Button>();
+
+                    foreach (var btn in Btns)
+                    {
+                        btn.BackgroundColor = Colors.Transparent;
+                        btn.TextColor = Color.Parse("#1C274C");
+                    }
+
+                    var Frames = MainPage.GetVisualTreeDescendants().OfType<Frame>();
+
+                    foreach (var frm in Frames)
+                    {
+
+                        if (frm.BackgroundColor.ToRgbaHex() != Color.Parse("#1C274C").ToRgbaHex() && frm.BackgroundColor.ToRgbaHex() != Colors.Transparent.ToRgbaHex())
+                        {
+
+                            frm.BackgroundColor = Color.Parse("#f2f2f2");
+                            foreach (var lbl in frm.GetVisualTreeDescendants().OfType<Label>())
+                            {
+                                lbl.TextColor = Color.Parse("#1C274C");
+                            }
+
+                        }
+                    }
+
+                    foreach (var entry in MainPage.GetVisualTreeDescendants().OfType<Entry>())
+                    {
+                        entry.TextColor = Color.Parse("#1C274C");
+                    }
+
+                    foreach (var autocomedit in MainPage.GetVisualTreeDescendants().OfType<AutoCompleteEdit>())
+                    {
+                        autocomedit.PlaceholderColor = Colors.Black;
+                        autocomedit.TextColor = Colors.Black;
+                        autocomedit.DropDownBackgroundColor = Color.Parse("#f5f5f5");
+                        autocomedit.DropDownItemTextColor = Colors.Black;
+                        autocomedit.IconColor = Colors.Gray;
+                    }
+                    foreach (var popup in MainPage.GetVisualTreeDescendants().OfType<DXPopup>())
+                    {
+                        foreach (var grid in popup.GetVisualTreeDescendants().OfType<Grid>())
+                        {
+                            grid.BackgroundColor = Color.Parse("#f5f5f5");
+                            foreach (var element in grid.Children)
+                            {
+                                if (element is NumericEdit NEdit)
+                                {
+                                    NEdit.TextColor = Colors.Black;
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         private static ScrollView IsInScrollView(Element element)
