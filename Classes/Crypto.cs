@@ -135,15 +135,25 @@ namespace Calculate_MauiDevExpress_1._0.Class
             {
                 percentLabel.TextColor = Colors.Red;
             }
+            // Создаем градиентный фон
+            var gradientBrush = new LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0),
+                EndPoint = new Point(0, 1)
+            };
+
+            gradientBrush.GradientStops.Add(new GradientStop(Color.Parse("#192C6A"), 0.1f));
+            gradientBrush.GradientStops.Add(new GradientStop(Color.Parse("#1C274C"), 0.5f));
 
             Frame frame = new Frame
             {
                 HeightRequest = 150,
                 Margin = new Thickness(15),
-                BackgroundColor = Color.Parse("#1C274C"),
+                Background = gradientBrush,
                 Content = grid,
                 AutomationId = $"{NameCrypto.Split(" / ")[0]}/{PriceCryptoUsd}",
-                BorderColor = Color.Parse("#f5f5f5")
+                BorderColor = Color.Parse("#f5f5f5"),
+                CornerRadius = 10
             };
 
             Frame frame2 = new Frame
@@ -220,7 +230,7 @@ namespace Calculate_MauiDevExpress_1._0.Class
                     return (priceUSD, percentChange24h, volumeUSD24h);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return (0, 0, 0); // Return default values in case of error
             }
@@ -273,8 +283,8 @@ namespace Calculate_MauiDevExpress_1._0.Class
                     foreach (JsonElement symbolname in symbolsArray.EnumerateArray())
                     {
                         // Получаем значение base_currency
-                        string? baseCurrency = symbolname.GetProperty("base_currency").GetString();
-                        string? quoteCurrency = symbolname.GetProperty("quote_currency").GetString();
+                        string baseCurrency = symbolname.GetProperty("base_currency").GetString();
+                        string quoteCurrency = symbolname.GetProperty("quote_currency").GetString();
 
 #pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
                         if (baseCurrency != null && baseCurrency.Contains(SearchSymbol) && quoteCurrency.Contains("USDT"))
@@ -318,8 +328,8 @@ namespace Calculate_MauiDevExpress_1._0.Class
                     foreach (JsonElement symbolname in symbolsArray.EnumerateArray())
                     {
                         // Получаем значение base_currency
-                        string? baseCurrency = symbolname.GetProperty("base_currency").GetString();
-                        string? quoteCurrency = symbolname.GetProperty("quote_currency").GetString();
+                        string baseCurrency = symbolname.GetProperty("base_currency").GetString();
+                        string quoteCurrency = symbolname.GetProperty("quote_currency").GetString();
 
 #pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
                         if (baseCurrency != null && quoteCurrency.Contains("USDT"))

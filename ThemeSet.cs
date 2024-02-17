@@ -70,8 +70,6 @@ namespace Calculate_MauiDevExpress_1._0
                             lbl.TextColor = Color.Parse("#f2f2f2");
                         }
                     }
-
-
                 }
 
                 foreach (var entry in MainPage.GetVisualTreeDescendants().OfType<Entry>())

@@ -29,7 +29,6 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-
             <Frame x:Name="FrameToCopy" Opacity="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" VerticalOptions="End" Margin="0,0,0,10" HorizontalOptions="Center" HeightRequest="30" WidthRequest="145" BackgroundColor="#e0e0e0">
                 <Label Text="Скопировано" FontSize="15" TextColor="Black" FontAttributes="Bold" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
             </Frame>
@@ -243,16 +242,33 @@
                 </Image>
                 <Label Text="Скорость" TextColor="#030303" Grid.Column="2" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"/>
 
-                <Image Source="temperature.svg" Opacity="0.3" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
-                <Label Text="Температура⌛️" TextColor="#030303" Grid.Column="0" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Image Source="temperature.svg" Opacity="0.3" Grid.Column="0" Grid.Row="2" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_OpenPopupIsTimeTransf" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Температура" TextColor="#030303" Grid.Column="0" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
 
-                <Image Source="time.svg" Opacity="0.3" Grid.Column="1" Grid.Row="2" VerticalOptions="Center"/>
-                <Label Text="Время⌛️" TextColor="#030303" Grid.Column="1" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Image Source="time.svg" Opacity="0.3" Grid.Column="1" Grid.Row="2" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_OpenPopupIsTimeTransf" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Время" TextColor="#030303" Grid.Column="1" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
 
-                <Image Source="volume.svg" Opacity="0.3" Grid.Column="2" Grid.Row="2" VerticalOptions="Center"/>
-                <Label Text="Обьем⌛️" TextColor="#030303" Grid.Column="2" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
+                <Image Source="volume.svg" Opacity="0.3" Grid.Column="2" Grid.Row="2" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Click_OpenPopupIsTimeTransf" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Обьем" TextColor="#030303" Grid.Column="2" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center"/>
 
-
+                <dxco:DXPopup ShadowColor="Black" x:Name="PopupPushIsTimeTransf">
+                    <Grid x:Name="GridPushIsTimeTransf" BackgroundColor="#f5f5f5" RowDefinitions="*,*,*">
+                        <Image Source="tea.svg" Grid.Row="1"/>
+                        <Label Text="В разработке" Grid.Row="2" FontAttributes="Bold" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Grid>
+                </dxco:DXPopup>
 
             </Grid>
 
@@ -1770,16 +1786,7 @@
 />
             <Label x:Name="CourseUsd" TextColor="#030303" Text="$ 00.00" Grid.Row="1" HorizontalOptions="Center"/>
             <Label x:Name="CourseEur" TextColor="#030303" Text="€ 00.00" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End"/>
-
             
-            <!--<Frame IsVisible="false" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="0" Margin="0,5,0,5" BackgroundColor="#f5f5f5">
-                <Entry x:Name="EntrySearchCrypto" IsSpellCheckEnabled="False" Placeholder="Поиск крипты" TextColor="#1C274C" FontAttributes="Bold" TextTransform="Uppercase" Completed="EntrySearchCrypto_Completed" HeightRequest="150">
-                    <Entry.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Click_Entry_Input" />
-                    </Entry.GestureRecognizers>
-                </Entry>
-            </Frame>-->
-
             <dxe:AutoCompleteEdit x:Name="SearchCryptoAutoEdit" BackgroundColor="Transparent" NoResultsFoundText="Не найдено" FocusedBorderColor="Gray" SelectionChanged="EntrySearchCrypto_Completed" Margin="2" SubmitIconVisibility="Never" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextVerticalAlignment="Center" TextHorizontalAlignment="Start" TextColor="Black" DropDownBackgroundColor="#f5f5f5" IconColor="Gray" BoxPadding="10" PlaceholderColor="Black" PlaceholderText="поиск крипты">
                 <dxe:AutoCompleteEdit.ItemsSourceProvider>
                     <dxe:AsyncItemsSourceProvider ItemsRequested="AsyncItemsSourceProvider_ItemsRequested" />

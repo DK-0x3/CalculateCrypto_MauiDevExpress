@@ -57,6 +57,7 @@
 	  <None Remove="Resources\Images\DarkTheme\dark_square.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_swap.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_system.svg" />
+	  <None Remove="Resources\Images\DarkTheme\dark_tea.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_temperature.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_time.svg" />
 	  <None Remove="Resources\Images\DarkTheme\dark_transf.svg" />
@@ -65,6 +66,7 @@
 	  <None Remove="Resources\Images\DarkTheme\dark_weight.svg" />
 	  <None Remove="Resources\Images\star.svg" />
 	  <None Remove="Resources\Images\star_active.svg" />
+	  <None Remove="Resources\Images\tea.svg" />
 	  <None Remove="Resources\Images\usd.svg" />
 	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
@@ -89,6 +91,7 @@
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_square.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_swap.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_system.svg" />
+	  <MauiImage Include="Resources\Images\DarkTheme\dark_tea.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_temperature.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_time.svg" />
 	  <MauiImage Include="Resources\Images\DarkTheme\dark_transf.svg" />

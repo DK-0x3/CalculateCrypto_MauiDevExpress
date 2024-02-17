@@ -10,7 +10,7 @@ namespace Calculate_MauiDevExpress_1._0
 {
     public partial class MainPage : ContentPage
     {
-        private Timer? timer;
+        private Timer timer;
         private decimal CourseCruptoActive;
 
         private volatile bool AnimationPlusAndMinusWhile = true;
@@ -24,6 +24,8 @@ namespace Calculate_MauiDevExpress_1._0
 
             GridPopup.WidthRequest = (DeviceDisplay.MainDisplayInfo.Width / 3) * 0.8;
             GridPopup.HeightRequest = (DeviceDisplay.MainDisplayInfo.Height / 3) * 0.4;
+            GridPushIsTimeTransf.WidthRequest = (DeviceDisplay.MainDisplayInfo.Width / 3) * 0.4;
+            GridPushIsTimeTransf.HeightRequest = (DeviceDisplay.MainDisplayInfo.Height / 3) * 0.3;
 
 
             if (Preferences.Default.ContainsKey("Theme"))
@@ -116,7 +118,6 @@ namespace Calculate_MauiDevExpress_1._0
 
             try
             {
-
                 List<Frame> frames = new();
                 foreach (string CryptoS in CryptoList)
                 {
@@ -139,7 +140,8 @@ namespace Calculate_MauiDevExpress_1._0
                 LoadingViewCrypto.IsLoading = false;
                 SearchCryptoAutoEdit.IsEnabled = false;
                 if (CryptoLayout2.Children.Count <= 2)
-                    CryptoLayout2.Add(new Label { Text = "ошибка соединения", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.End, TextColor = Colors.Grey });
+                    CryptoLayout2.Add(new Label { Text = "ошибка соединения", HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.End, TextColor = Colors.Grey
+                    });
             }
 
             foreach (var frame in CryptoLayout2.Children)
@@ -1252,6 +1254,11 @@ namespace Calculate_MauiDevExpress_1._0
         private void Click_ResultIsTask(object sender, TappedEventArgs e)
         {
             TextOfTask.Text = ResultText.Text;
+        }
+
+        private void Click_OpenPopupIsTimeTransf(object sender, TappedEventArgs e)
+        {
+            PopupPushIsTimeTransf.IsOpen = true;
         }
     }
 }
